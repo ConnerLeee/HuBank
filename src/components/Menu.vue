@@ -82,19 +82,28 @@
     <div style="padding-bottom: 10px; padding-top: 10px; margin-right: 10px">
       <el-button-group>
         <el-button color="rgb(151,39,39)" type="primary">注册</el-button>
-        <el-button color="rgb(151,39,39)" type="primary">登录</el-button>
+        <el-button color="rgb(151,39,39)" type="primary" @click="toLogin">登录</el-button>
       </el-button-group>
     </div>
   </div>
 </template>
 
-<script lang="ts" setup>
-import { ref } from 'vue'
-
-const activeIndex = ref('1')
-const activeIndex2 = ref('1')
-const handleSelect = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
+<script>
+export default{
+  data(){
+    return{
+      activeIndex:'1',
+      activeIndex2:'1'
+      };
+    },
+  methods:{
+    handleSelect(key,keyPath){
+      console.log(key,keyPath);
+    },
+    toLogin(){
+      this.$router.push('/login')
+    }
+  } 
 }
 </script>
 
