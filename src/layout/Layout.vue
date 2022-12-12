@@ -19,13 +19,11 @@
 <script>
 import Header from "../components/Header.vue";
 import Announcement from "../components/Announcement.vue";
-import Carousel from "../components/Carousel.vue";
 import Menu from "../components/Menu.vue";
 
 export default {
   name: "Layout",
   components: {
-    Carousel,
     Menu,
     Announcement,
     Header
