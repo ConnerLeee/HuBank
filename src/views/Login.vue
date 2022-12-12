@@ -27,14 +27,16 @@
           name="passord"
           show-password="on"/>
         </el-form-item>
-        <el-button>登录</el-button>
+        <el-button @click="login">登录</el-button>
+        <el-button @click="toSignup">注册</el-button>
       </el-form>
     </div>
   </template>
   
   <script>
   import {validUsername} from "../utils/validate";
-  import request from "../utils/request";
+
+  import axios from 'axios';
   
   export default {
     name: 'Login',
@@ -69,20 +71,19 @@
     },
     methods: {
       login() {
-        request.post("/api/user/login", this.form).then(res => {
-          if(res.code === '0') {
-            this.$message({
-              type: "success",
-              message: "登录成功"
-            })
-            this.$router.push("/")  //登陆成功后跳转
-          } else {
-            this.$message({
-              type: "error",
-              message: res.msg
-            })
+        axios.post("https://localhost:44369/api/users/login?phone="
+                  +this.loginForm.username
+                  +"&password="
+                  +this.loginForm.password
+                  ,this.loginForm).then(res => {
+          console.log(res);
+          if(res.data==1){
+            this.$router.push('/')
           }
         })
+      },
+      toSignup(){
+        this.$router.push('/signup')
       }
     }
   }
