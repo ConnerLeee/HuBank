@@ -35,6 +35,7 @@
   
   <script>
   import {validUsername} from "../utils/validate";
+  import {store} from "../store/index.js";
 
   import axios from 'axios';
   
@@ -79,6 +80,8 @@
           console.log(res);
           if(res.data==1){
             this.$router.push('/')
+            store.username=this.loginForm.username;
+            console.log(store.username);
           }
         })
       },
