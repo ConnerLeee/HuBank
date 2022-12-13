@@ -79,21 +79,31 @@
       <div class="h-6" />
     </div>
 
-    <div style="padding-bottom: 10px; padding-top: 10px; margin-right: 10px">
-      <el-button-group>
-        <el-button color="rgb(151,39,39)" type="primary">注册</el-button>
-        <el-button color="rgb(151,39,39)" type="primary" @click="toLogin">登录</el-button>
-      </el-button-group>
+    <div>
+      <div style="padding-bottom: 10px; padding-top: 10px; margin-right: 10px" v-if="unLogin">
+        <el-button-group>
+          <el-button color="rgb(151,39,39)" type="primary">注册</el-button>
+          <el-button color="rgb(151,39,39)" type="primary" @click="toLogin">登录</el-button>
+        </el-button-group>
+      </div>
+      <div style="padding-bottom: 10px; padding-top: 10px; margin-right: 10px" v-else>
+        <el-avatar :size="50" :src="circleUrl" />
+        <hr>
+        <span>{{name}}</span>
+      </div>
     </div>
   </div>
 </template>
 
-<script>
+<script>s
+import {store} from "../store/index";
 export default{
   data(){
     return{
       activeIndex:'1',
-      activeIndex2:'1'
+      activeIndex2:'1',
+      unLogin:!store.isLogin,
+      name:store.username
       };
     },
   methods:{
