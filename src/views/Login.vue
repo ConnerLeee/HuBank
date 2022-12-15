@@ -17,20 +17,20 @@
       <div class="login_container">
           <div class="login_form">
             <h2>登录</h2>
-            <form ref="loginForm" :model="loginInfo" :rules="loginRules">
+            <div ref="loginForm" :model="loginForm">
               <div class="inputBox">
                   <!-- v-model把输入的值传给name变量 -->
-                  <input type="text" name="username" placeholder="用户名">
+                  <input ref="username" v-model="loginForm.username" type="text" name="username" placeholder="用户名">
               </div>
               <div class="inputBox">
-                  <input type="password" name="password" placeholder="密码">
+                  <input type="password" ref="password" v-model="loginForm.password" name="password" placeholder="密码">
               </div>
               <div class="inputBox">
                   <input type="submit" value="登录" @click="login">
               </div>
               <p class="forget">忘记密码？ <a href="#">修改密码</a></p>
               <p class="forget">没有账户？ <a href="#">注册账户</a></p>
-            </form>
+            </div>
           </div>
       </div>
   </div>
@@ -45,17 +45,22 @@ export default {
   name: 'Login',
   data() {
     return {
-
+      loginForm: {
+          username: '',
+          password: ''
+        }
     }
   },
   methods: {
     login() {
-      axios.post("https://localhost:44369/api/users/login?name="
+      this.$router.push('/home')
+      axios.get("https://localhost:44369/api/users/login?name="
                 +this.loginForm.username
                 +"&password="
                 +this.loginForm.password
                 ,this.loginForm).then(res => {
         console.log(res);
+        this.$router.push('/home')
         if(res.data==1){
           this.$router.push('/home')
           store.username=this.loginForm.username;
