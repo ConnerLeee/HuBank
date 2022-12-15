@@ -1,6 +1,6 @@
 <template>
   <div class = "register" style="width: 100%; height: 695px; background-color: rgb(121,39,39); overflow: hidden;">
-    <div style="width: 400px; margin: 150px auto">
+    <div class="register_form" style="width: 400px; margin: 150px auto">
       <div class="title" style="color: rgb(255,255,255); font-size: 30px; text-align: center; padding: 30px 0;">Hu Bank 用 户 注 册</div>
         <el-form
           ref="registerForm"
@@ -13,7 +13,7 @@
           status-icon
         >
         <el-form-item label="手机号" prop="phone">
-          <el-input v-model="registerInfo.phone" placeholder="请输入"/>
+          <el-input class="input" v-model="registerInfo.phone" placeholder="请输入"/>
         </el-form-item>
 
         <el-form-item label="姓名" prop="name">
@@ -103,4 +103,31 @@ const options = Array.from({ length: 10000 }).map((_, idx) => ({
 
 <style scoped>
 
+</style>
+
+<style>
+.register_form{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+  margin-top: 80px;
+}
+.input{
+  box-sizing: border-box;
+
+  width: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  border-radius: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: #fff;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
 </style>

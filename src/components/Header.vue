@@ -30,7 +30,9 @@
 <!--    头部 搜索-->
     <div style="display: flex; justify-content: space-between">
       <div style="height: 64px; display: flex">
-        <div class="link_search" style="color: rgb(151,39,39); border-color: rgb(0,0,0); margin-left: 10px; font-size: 48px; ">Hu Bank</div>
+        <div class="link_search" style="color: rgb(151,39,39); border-color: rgb(0,0,0); margin-left: 10px; font-size: 48px; ">
+          <img src="../assets/img/logo.png" style="width:100px; height:58px; object-fit: scale-down; margin-top: 5px; background-size: cover;">
+        </div>
         <div class="telephone" style="margin-left: 15px; font-size: 16px; margin-top: 32px">24小时客户服务电话</div>
         <div class="telephone_number" style="margin-left: 10px; font-size: 16px; margin-top: 32px">12345</div>
       </div>
