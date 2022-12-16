@@ -4,5 +4,10 @@ import router from './router'
 import './assets/global.css'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
+import store from './store'
+import './permission'
+//import mockXHR from '../mock'
 
-createApp(App).use(router).use(ElementPlus).mount('#app')
+//mockXHR.mockXHR()
+
+createApp(App).use(router).use(store).use(ElementPlus).mount('#app')

@@ -29,7 +29,7 @@
                   <input type="submit" value="登录" @click="login">
               </div>
               <p class="forget">忘记密码？ <a href="#">修改密码</a></p>
-              <p class="forget">没有账户？ <a href="#">注册账户</a></p>
+              <p class="forget">没有账户？ <a href="#/register">注册账户</a></p>
             </div>
           </div>
       </div>
@@ -38,8 +38,6 @@
 </template>
 
 <script>
-import axios from "axios";
-import {store} from "../store/index";
 
 export default {
   name: 'Login',
@@ -53,24 +51,13 @@ export default {
   },
   methods: {
     login() {
-      this.$router.push('/home')
-      axios.get("https://localhost:44369/api/users/login?name="
-                +this.loginForm.username
-                +"&password="
-                +this.loginForm.password
-                ,this.loginForm).then(res => {
-        console.log(res);
+      this.$store.dispatch('user/login',this.loginForm).then(()=>{
         this.$router.push('/home')
-        if(res.data==1){
-          this.$router.push('/home')
-          store.username=this.loginForm.username;
-          store.isLogin=true;
-          alert("登陆成功,欢迎"+store.username);
-          console.log(store.username);
-        }
-        else alert("登陆失败！")
       })
     },
+    toRegister(){
+      this.$router.push('/register')
+    }
 }
 }
 </script>

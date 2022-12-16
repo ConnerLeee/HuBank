@@ -1,6 +1,13 @@
-import { reactive } from "vue";
+import Vuex from 'vuex'
+import getters from './getters'
+import user from './modules/user'
 
-export const store = reactive({
-    username:'',
-    isLogin:false
+
+const store = new Vuex.Store({
+  modules: {
+    user
+  },
+  getters
 })
+
+export default store

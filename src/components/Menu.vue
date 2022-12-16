@@ -82,36 +82,46 @@
     <div style="flex: 1"></div>
 
     <div style="width: 70px; padding-top: 20px;">
-      <el-dropdown>
-      <span class="user_info_login">
-        {{username}}
-      </span>
-      <template #dropdown>
-        <el-dropdown-menu>
-          <el-dropdown-item>用户信息</el-dropdown-item>
-          <el-dropdown-item @click="$router.push('/login')">退出登录</el-dropdown-item>
-        </el-dropdown-menu>
-      </template>
+      <el-dropdown class="avatar-container">
+        <div class="avatar-wrapper">
+          <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
+          <span class="el-icon-caret-bottom">{{name}}</span>
+        </div>
+        <template #dropdown>
+          <el-dropdown-menu>
+            <el-dropdown-item>用户信息</el-dropdown-item>
+            <el-dropdown-item @click="logout">退出登录</el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
       </el-dropdown>
     </div>
   </div>
 </template>
 
 <script>
-import {store} from "../store/index"
+import { mapGetters } from 'vuex'
 export default{
   data(){
     return{
       activeIndex:'1',
       activeIndex2:'1',
-      username:store.username
       };
     },
   methods:{
     handleSelect(key,keyPath){
       console.log(key,keyPath);
     },
-  } 
+    async logout(){
+      await this.$store.dispatch('user/logout')
+      this.$router.push(`/login?redirect=${this.$route.fullPath}`)
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'name',
+      'avatar'
+    ])
+  }
 }
 </script>
 
@@ -120,5 +130,19 @@ export default{
   cursor: pointer;
   display: flex;
   align-items: center;
+}
+.avatar-container {margin-right: 30px;}
+.avatar-wrapper {
+text-align: center;
+margin-top: -25px;
+position: relative;}
+.user-avatar {
+cursor: pointer;
+width: 40px;
+height: 40px;
+border-radius: 10px;
+}
+.el-icon-caret-bottom {
+cursor: pointer;
 }
 </style>

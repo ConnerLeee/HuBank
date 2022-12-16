@@ -7,7 +7,7 @@ const routes = [
         path:'/',
         name:'Layout',
         component: Layout,
-        redirect: '/login',
+        redirect: '/home',
         children: [
             {
                 path:'home',
@@ -35,7 +35,8 @@ const routes = [
     {
         path:'/login',
         name:'Login',
-        component: () => import("../views/Login.vue")
+        component: () => import("../views/Login.vue"),
+        hidden:true
     },
     // 注册页
     {
@@ -49,6 +50,13 @@ const router = createRouter({
     history: createWebHashHistory(),
     routes,
 })
+export function resetRouter() {
+    const newRouter = createRouter({
+        history: createWebHashHistory(),
+        routes,
+    })
+    router.matcher = newRouter.matcher // reset router
+}
 
 
 

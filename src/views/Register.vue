@@ -5,7 +5,6 @@
         <el-form
           ref="registerForm"
           :model="registerInfo"
-          :rules="registerRules"
           label-position="top"
           label-width="120px"
           class="registerform"
@@ -16,16 +15,16 @@
           <el-input class="input" v-model="registerInfo.phone" placeholder="请输入"/>
         </el-form-item>
 
-        <el-form-item label="姓名" prop="name">
-          <el-input v-model="registerInfo.name" placeholder="请输入"/>
+        <el-form-item label="姓名" prop="username">
+          <el-input v-model="registerInfo.username" placeholder="请输入"/>
         </el-form-item>
 
         <el-form-item label="密码" prop="password">
           <el-input v-model="registerInfo.password" name="password" placeholder="请输入"/>
         </el-form-item>
 
-        <el-form-item label="银行账户" prop="account">
-          <el-input v-model="registerInfo.account" placeholder="请输入"/>
+        <el-form-item label="银行账户" prop="cardID">
+          <el-input v-model="registerInfo.cardID" placeholder="请输入"/>
         </el-form-item>
 
         <el-form-item style="width:150px; margin: auto">
@@ -39,7 +38,7 @@
 
 <script lang="ts" setup>
 import { reactive, ref } from 'vue'
-import type { FormInstance, FormRules } from 'element-plus'
+import { ElMessage, ElMessageBox, FormInstance, FormRules } from 'element-plus'
 import axios from 'axios'
 import router from '../router/index'
 
@@ -47,42 +46,40 @@ const formSize = ref('default')
 const registerForm = ref<FormInstance>()
 const registerInfo = reactive({
   phone: '',
-  name: '',
+  username: '',
   password: '',
-  account: '',
+  cardID: '',
 })
 
-const registerRules = reactive<FormRules>({
-  phone: [
-    { required: true, message: '请输入手机号', trigger: 'blur' },
-    { min: 11, max: 11, message: '手机号应该是11位的', trigger: 'blur' },
-  ],
-  name: [
-    { required: true, message: '请输入姓名', trigger: 'blur' },
-  ],
-  password: [
-    { required: true, message: '请输入密码', trigger: 'blur' },
-    { min: 6, max: 18, message: '密码应该是6到18位的', trigger: 'blur' },
-  ],
-  account: [
-    { required: true, message: '请输入银行账户', trigger: 'blur' },
-    { min: 16, max: 19, message: '银行账户应该是16到19位的', trigger: 'blur' },
-  ],
-})
+// const registerRules = reactive<FormRules>({
+//   phone: [
+//     { required: true, message: '请输入手机号', trigger: 'blur' },
+//     { min: 11, max: 11, message: '手机号应该是11位的', trigger: 'blur' },
+//   ],
+//   username: [
+//     { required: true, message: '请输入姓名', trigger: 'blur' },
+//   ],
+//   password: [
+//     { required: true, message: '请输入密码', trigger: 'blur' },
+//     { min: 6, max: 18, message: '密码应该是6到18位的', trigger: 'blur' },
+//   ],
+//   cardID: [
+//     { required: true, message: '请输入银行账户', trigger: 'blur' },
+//     { min: 16, max: 19, message: '银行账户应该是16到19位的', trigger: 'blur' },
+//   ],
+// })
 
 const submitForm = async (formEl: FormInstance | undefined) => {
   if (!formEl) return
   await formEl.validate((valid, fields) => {
     if (valid) {
-      console.log('submit!')
-      axios.post("https://localhost:44369/api/users/register?phone="+registerInfo.phone
-      +"&name="+registerInfo.name+"&password="+registerInfo.password).then(response=>{
+      console.log(registerInfo)
+      axios.post('http://localhost/user/signup',registerInfo).then(response=>{
         console.log(response)
-        if(response.data==1){
-          router.push('/')
-          return "注册成功"
+        if(response.data.code===20002){
+          router.push('/login')
+          ElMessage({message:"注册成功",type:"success",duration: 5 * 1000})
         }
-        else return"注册失败"
       })
     } else {
       console.log('error submit!', fields)
