@@ -68,65 +68,8 @@ section{
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(to bottom,#f1f4f9,#dff1ff);
-}
-section .color{
-  position: absolute;
-  filter: blur(200px);
-}
-section .color:nth-child(1){
-  top: -350px;
-  width: 600px;
-  height: 600px;
-  background: rgb(151, 39, 39);
-}
-section .color:nth-child(2){
-  bottom: 100px;
-  left: 100px;
-  width: 500px;
-  height: 400px;
-  background: rgb(161, 49, 49);
-}
-section .color:nth-child(3){
-  bottom: 150px;
-  right: 100px;
-  width: 600px;
-  height: 300px;
-  background: rgb(187, 73, 73);
-}
-section .color:nth-child(4){
-  top:-50px;
-  left: 10px;
-  width: 300px;
-  height: 300px;
-  background: rgb(85, 152, 230);
-}
-section .color:nth-child(5){
-  top: -50px;
-  right: 10px;
-  width: 300px;
-  height: 300px;
-  background: rgb(172, 76, 76);
-}
-section .color:nth-child(6){
-  bottom: 0;
-  left: 10px;
-  width: 300px;
-  height: 300px;
-  background: rgb(161, 49, 49);
-}
-section .color:nth-child(7){
-  bottom: 0;
-  width: 500px;
-  height: 200px;
-  background: rgb(161, 19, 19);
-}
-section .color:nth-child(8){
-  bottom: 10px;
-  right: 10px;
-  width: 400px;
-  height: 300px;
-  background: rgb(76, 128, 61);
+  background: url(../assets/img/cumt.jpg) no-repeat;
+  background-size: 100% 100%;
 }
 .login_container{
   width: 100vw;

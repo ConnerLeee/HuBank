@@ -1,32 +1,117 @@
 <template>
-  <div class="carousel" style="height:450px; width: 1500px; margin-top: 10px; background-color: rgb(151,39,39)">
-    <el-carousel :interval="4000" type="card" height="450px">
-      <el-carousel-item v-for="item in ca_imgList" :key="item.id">
-        <img style="object-fit: scale-down; width:100%; height:100% " :src="item.idView" class="img">
-      </el-carousel-item>
-    </el-carousel>
+  <div class="carousel_box">
+    <ul class="box">
+    <li class="img">
+      <img src="../assets/carousel/1.jpg" alt="" style="height: 450px; width:725px;">
+      <div class="text">Hu Bank</div>
+    </li>
+    <li class="img">
+      <img src="../assets/carousel/2.jpg" alt="" style="height: 450px; width:725px;">
+      <div class="text">比安全更安全</div>
+    </li>
+    <li class="img">
+      <img src="../assets/carousel/3.jpg" alt="" style="height: 450px; width:725px;">
+      <div class="text">最全面的业务</div>
+    </li>
+    <li class="img">
+      <img src="../assets/carousel/4.jpg" alt="" style="height: 450px; width:725px;">
+      <div class="text">最优质的生活</div>
+    </li>
+    <li class="img">
+      <img src="../assets/carousel/5.jpg" alt="" style="height: 450px; width:725px;">
+      <div class="text">新一代网上银行</div>
+    </li>
+    <li class="img">
+      <img src="../assets/carousel/6.jpg" alt="" style="height: 450px; width:725px;">
+      <div class="text">您的最佳选择</div>
+    </li>
+    <li class="img">
+      <img src="../assets/carousel/7.jpg" alt="" style="height: 450px; width:725px;">
+      <div class="text">超强HuBank在手</div>
+    </li>
+    <li class="img">
+      <img src="../assets/carousel/8.jpg" alt="" style="height: 450px; width:725px;">
+      <div class="text">所有业务都拿手</div>
+    </li>
+    </ul>
+    <div class="color_box">
+      <div class="color"></div>
+      <div class="bottom">
+        <div class="bottom_box">
+          <div class="website_inf">法律声明 | 网站导航 | 友情链接</div>
+          <div class="website_inf">服务热线 123456</div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: "Carousel",
-  data(){
-    return{
-      ca_imgList: [
-        {id:0,idView:"../assets/img/ad.png"},
-        {id:1,idView:"../assets/img/ad.png"},
-        {id:2,idView:"../assets/img/ad.png"},
-        {id:3,idView:"../assets/img/ad.png"},
-        {id:4,idView:"../assets/img/ad.png"},
-        {id:5,idView:"../assets/img/ad.png"}
-      ],
-      screenWidth: 0
-    };
-  }
+export default{
+  name:'Carousel',
 }
 </script>
 
-<style scoped>
-
+<style>
+.carousel_box{
+  margin-top: 10px; 
+}
+.img{
+  float:left;
+  /* 图片间距 */
+  width: 186.5px;
+  border-left: 1px solid #fff;
+  position: relative;
+  transition: all 0.5s;
+}
+.box{
+  width: 1500px;
+  height: 460px;
+  margin: 3px auto;
+  overflow: hidden;
+}
+.text{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  color: #fff;
+  background: rgba(0,0,0,0.1);
+  font-size: 16px;
+  font-weight: 30px;
+}
+.box:hover li{
+  width: 120px;
+}
+.box li:hover{
+  width: 640px;
+}
+.color_box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+  weight: 1500px;
+}
+.color_box .color{
+  position: absolute;
+  border-radius: 10px;
+  bottom: 10px;
+  left: 20px;
+  width: 1500px;
+  height: 45px;
+  margin: 0 auto;
+  background: linear-gradient(to right,rgb(151,39,39),rgb(74, 162, 234));
+  z-index: -1;
+}
+.bottom{
+  width: 1480px;
+}
+.website_inf{
+  font-size: 12px;
+  color: #fff;
+}
 </style>

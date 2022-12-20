@@ -89,7 +89,7 @@
         </div>
         <template #dropdown>
           <el-dropdown-menu>
-            <el-dropdown-item>用户信息</el-dropdown-item>
+            <el-dropdown-item @click="$router.push('/userinfo')">用户信息</el-dropdown-item>
             <el-dropdown-item @click="logout">退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </template>

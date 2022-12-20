@@ -29,6 +29,11 @@ const routes = [
                 name:'Interbanktransfer',
                 component: () => import("../components/Interbanktransfer.vue")
             },
+            {
+                path:'userinfo',
+                name:'UserInfo',
+                component:()=>import("../components/UserInfo.vue")
+            }
         ]
     },
     // 登录页

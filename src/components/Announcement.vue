@@ -1,9 +1,11 @@
 <template>
   <div class="announcement" id="announcement"
-       style="background-color: rgb(151,39,39);
+       style="background: linear-gradient(to right,rgb(151,39,39),rgb(74, 162, 234));
               height: 25px;
               line-height: 25px;
               border-radius: 10px;
+              margin-left: 10px;
+              margin: 0 10px;
               border-bottom: 1px solid #ccc;
               display: flex">
     <div style="padding-left: 10px;

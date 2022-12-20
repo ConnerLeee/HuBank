@@ -38,7 +38,7 @@
       </div>
       <div style="margin: 10px 0; height: 32px; line-height: 32px; margin-top: 20px; margin-right: 10px; display: flex">
         <el-input v-model="search" placeholder="请输入关键词" />
-        <el-button color="rgb(151,39,39)" style="height: 32px; line-height: 32px">搜索</el-button>
+        <el-button style="color:#fff; height: 32px; line-height: 32px; background: linear-gradient(to right,rgb(151,39,39),rgb(74, 162, 234));">搜索</el-button>
       </div>
     </div>
   </div>
